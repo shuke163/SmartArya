@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+
+{% block right-content %}
+    <div class="right-content">
+        <!-- 添加 -->
+        {% if chlist.show_add %}
+            <div style="margin: 10px 0px">
+                <a class="btn btn-primary" href="{{ chlist.add_url }}">添加</a>
+            </div>
+        {% endif %}
+        <!-- 查询 -->
+        {% if chlist.search_list %}
+            <div class="col-sm-offset-10" style="margin-bottom: 10px">
+                <form method="GET" class="form-inline">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="q" value="{{ chlist.q_value }}">
+                    <input type="submit" class="btn btn-primary" value="搜索">
+                </form>
+            </div>
+        {% endif %}
+
+        <!-- 批量操作 -->
+        <form class="form-inline" method="POST">
+            {% csrf_token %}
+            {% if chlist.actions %}
+                <div style="margin-bottom: 10px">
+                    <select class="form-control" name="select_action" style="width: 200px">
+                        {% for item in  chlist.action_options %}
+                            <option value="{{ item.value }}">{{ item.text }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-success">执行</button>
+                </div>
+            {% endif %}
+            <!-- 表格 -->
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    {% for title in chlist.table_header %}
+                        <th>{{ title }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in chlist.table_body %}
+                    <tr>
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </form>
+        <h2>列表页面</h2>
+        <ul class="pagination">
+            {{ chlist.page_html | safe }}
+        </ul>
+
+    </div>
+{% endblock %}
