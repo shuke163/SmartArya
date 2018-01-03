@@ -36,8 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'arya.apps.AryaConfig',
-    'app01',
-    'app02'
+    'rbac.apps.RbacConfig',
+    'app01.apps.App01Config',
+    'app02.apps.App02Config',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rbac.middleware.rbac.RbacMiddleware',
 ]
 
 ROOT_URLCONF = 'CustAdmin.urls'
@@ -120,3 +122,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+############ 权限相关配置 ############
+PERMISSION_MENU_KEY = "MsdasLMSxkmsdaodapHl"
+PERMISSION_URL_DICT_KEY = "LKfsaddHsLAJSdseJRQ"
+
+# URL白名单
+VALID_URL = [
+    '^/login/',
+    '^/logout/',
+    '^/index/',
+    '^/admin*'
+]
+
+# login-URL
+LOGNIN_URL = "/login/"

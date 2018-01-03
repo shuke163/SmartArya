@@ -10,7 +10,7 @@
         {% endif %}
         <!-- 查询 -->
         {% if chlist.search_list %}
-            <div class="col-sm-offset-10" style="margin-bottom: 10px">
+            <div style="margin-bottom: 10px">
                 <form method="GET" class="form-inline">
                     {% csrf_token %}
                     <input type="text" class="form-control" name="q" value="{{ chlist.q_value }}">
@@ -25,7 +25,7 @@
             {% if chlist.actions %}
                 <div style="margin-bottom: 10px">
                     <select class="form-control" name="select_action" style="width: 200px">
-                        {% for item in  chlist.action_options %}
+                        {% for item in chlist.action_options %}
                             <option value="{{ item.value }}">{{ item.text }}</option>
                         {% endfor %}
                     </select>

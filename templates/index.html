@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load rbac %}
 
 <!-- 头部 -->
 {% block nav-header %}
@@ -37,27 +38,24 @@
 
 <!-- 左侧菜单 -->
 {% block left-menu %}
+    {% menu_html request %}
+    {% comment %}
     <div class="item">
-        <div class="item-title">主机管理</div>
-        <div class="item-permission hide">
-            <a href="/arya/app02/hostinfo/"> 主机列表 </a>
+        <div class="item-title">菜单一</div>
+        <div class="nav nav-stacked item-permission">
+            <li><a href="#"> 主机列表1 </a></li>
         </div>
-        <div class="item-permission hide">
-            <a href="/arya/app02/business/"> 业务线 </a>
+        <div class="item-permission">
+            <a href="#"> 主机列表2 </a>
         </div>
     </div>
     <div class="item">
-        <div class="item-title">用户管理</div>
+        <div class="item-title">菜单二</div>
         <div class="item-permission hide">
-            <a href="/arya/app01/userinfo/"> 用户列表 </a>
-        </div>
-        <div class="item-permission hide">
-            <a href="/arya/app01/usertype/"> 用户类型 </a>
-        </div>
-        <div class="item-permission hide">
-            <a href="/arya/app01/role/"> 角色列表 </a>
+            <a href="#"> 用户列表 </a>
         </div>
     </div>
+    {% endcomment %}
 {% endblock %}
 
 {% block right-content %}
@@ -82,9 +80,10 @@
             var ele = $('div.item-permission').children('a');
             ele.click(function () {
                 $(this).addClass('active').parent('div.item-permission').siblings('div.item-permission').children('a').removeClass('active');
-                $(this).parents('div.item').siblings().children('div.item-permission').find('a').removeClass('active');
+                $(this).parents('div.item').siblings().find('a').removeClass('active')
             })
         }
+
         // 控制菜单是否展开
         function EventMenu() {
             $('div.item-title').click(function () {
@@ -92,7 +91,6 @@
                 mene_obj.each(function () {
                     var is_hide = $(this).hasClass('hide');
                     if (is_hide) {
-                        console.log(111);
                         $(this).removeClass('hide')
                     } else {
                         $(this).addClass('hide')
