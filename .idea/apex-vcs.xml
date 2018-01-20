@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ApexVcsIndex">
+    <index-move-record>
+      <option name="firstPath" value="/rbac/util/__init__.py" />
+      <option name="path" value="/rbac/utils/__init__.py" />
+    </index-move-record>
+    <index-move-record>
+      <option name="firstPath" value="/rbac/util/getmd5.py" />
+      <option name="path" value="/rbac/utils/getmd5.py" />
+    </index-move-record>
+  </component>
+</project>

@@ -44,7 +44,9 @@ class HostInfoConfig(v1.AryaConfig):
         :return:
         """
         pk_list = request.POST.getlist('pk')
+        print("正在删除...")
         self.model_class.objects.filter(id__in=pk_list).delete()
+        print("删除已完成...")
 
     multi_delete.text = "批量删除"
 
