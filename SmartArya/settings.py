@@ -24,7 +24,7 @@ SECRET_KEY = '0b-*l=2!r+ko1_2tt9qlg^u#2rm&j8-*rdaufh0+2fbc^o2(5#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.termite.com']
 
 # Application definition
 
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     # 'rbac.middleware.rbac.RbacMiddleware',
 ]
 
-ROOT_URLCONF = 'CustAdmin.urls'
+ROOT_URLCONF = 'SmartArya.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CustAdmin.wsgi.application'
+WSGI_APPLICATION = 'SmartArya.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
