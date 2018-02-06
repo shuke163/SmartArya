@@ -31,9 +31,9 @@ class HostInfoConfig(v1.AryaConfig):
         :param request:
         :return:
         """
+        pk_list = request.POST.getlist('pk')
         print("正在初始化...")
-        print(request.POST.getlist('pk'))
-        pass
+        print(pk_list)
 
     multi_init.text = "批量初始化"
 
